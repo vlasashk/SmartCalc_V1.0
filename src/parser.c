@@ -1,6 +1,6 @@
 #include "stack.h"
 
-int input_from_user(char *src) {
+int inputFromUser(char *src) {
   int res = 1;
   if (fgets(src, MAX_LIMIT, stdin) == NULL) {
     res = 0;
@@ -36,7 +36,7 @@ int parseNumber(const char *src, char **pointer, int *i) {
   return res;
 }
 
-int convert_input(const char *src, Stack *input) {
+int convertInput(const char *src, Stack *input) {
   int flag = 1;
   int left_br = 0;
   int right_br = 0;

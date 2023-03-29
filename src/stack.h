@@ -25,10 +25,9 @@ typedef struct {
 double algorithm(char *str, double x);
 double calc_duo(double a, double b, char oper);
 double calc_uno(double a, char oper);
-int rpn_algorithm(char *src, char *des, int n, int *n_rpn);
 
-int input_from_user(char *src);
-int convert_input(const char *src, Stack *input);
+int inputFromUser(char *src);
+int convertInput(const char *src, Stack *input);
 
 Stack *initStack();
 int isEmpty(Stack *input);
@@ -38,11 +37,15 @@ char *peek(Stack *input);
 void freeStack(Stack *input);
 void reverseStack(Stack *stack);
 
-int check_priority(char oper);
 int checkParseRes(char parse_res, int *i);
 int bracketsParsing(char bracket, int *left_br, int *right_br);
 int parseNumber(const char *src, char **pointer, int *i);
 char parseTrigonometry(const char *src);
 int expressionValidation(Stack *input);
+
+Stack *rpnConverter(Stack *input);
+void operationHandler(Stack *rpn_stack, Stack *temp_stack, char *pop_value);
+int priorityValidation(Stack *temp_stack, int peek_priority, int pop_priority);
+int checkPriority(char oper);
 
 #endif // SRC_STACK_H_
