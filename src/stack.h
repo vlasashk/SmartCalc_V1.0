@@ -20,11 +20,14 @@ typedef struct input_node {
 
 typedef struct {
   InputNode *top;
+  int x_status;
+  char *x_value;
 } Stack;
 
-double algorithm(char *str, double x);
-double calc_duo(double a, double b, char oper);
-double calc_uno(double a, char oper);
+int calculation(Stack *rpn, double *result);
+double calcUno(double a, char oper, int *calc_err);
+double calcDuo(double a, double b, char oper, int *calc_err);
+int checkUnoDuo(char oper);
 
 int inputFromUser(char *src);
 int convertInput(const char *src, Stack *input);
@@ -39,9 +42,10 @@ void reverseStack(Stack *stack);
 
 int checkParseRes(char parse_res, int *i);
 int bracketsParsing(char bracket, int *left_br, int *right_br);
-int parseNumber(const char *src, char **pointer, int *i);
+int parseNumber(const char *src, char **pointer, int *i, Stack *input);
 char parseTrigonometry(const char *src);
 int expressionValidation(Stack *input);
+int inputX(Stack *input);
 
 Stack *rpnConverter(Stack *input);
 void operationHandler(Stack *rpn_stack, Stack *temp_stack, char *pop_value);

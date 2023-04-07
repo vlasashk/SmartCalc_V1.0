@@ -12,26 +12,18 @@ int inputFromUser(char *src) {
   return res;
 }
 
-int parseNumber(const char *src, char **pointer, int *i) {
+int inputX(Stack *input) {
   int res = 1;
-  int dot_flag = 0;
-  int num_flag = 0;
-  int x_flag = 0;
-  while (strchr(DIGITS, src[*i]) != NULL) {
-    if (src[*i] != 'x') {
-      num_flag += 1;
-    } else {
-      x_flag += 1;
-    }
-    if (src[*i] == '.') {
-      dot_flag += 1;
-    }
-    *(*pointer)++ = src[*i];
-    *i += 1;
-  }
-  *i -= 1;
-  if (dot_flag > 1 || (x_flag == 1 && num_flag > 0) || (x_flag > 1)) {
+  char x_input[MAX_LIMIT];
+  if (fgets(x_input, MAX_LIMIT, stdin) == NULL) {
     res = 0;
+  } else {
+    if ((strlen(x_input) - 1) == 0) {
+      res = 0;
+    }
+    x_input[strlen(x_input) - 1] = '\0';
+    input->x_value = (char *)calloc(strlen(x_input) + 1, sizeof(char));
+    strcpy(input->x_value, x_input);
   }
   return res;
 }
@@ -45,7 +37,7 @@ int convertInput(const char *src, Stack *input) {
   for (int i = 0; i < n && flag == 1; i++) {
     char *pointer = &temp[0];
     if (strchr(DIGITS, src[i]) != NULL) {
-      flag = parseNumber(src, &pointer, &i);
+      flag = parseNumber(src, &pointer, &i, input);
     } else if (strchr("()", src[i]) != NULL) {
       if ((flag = bracketsParsing(src[i], &left_br, &right_br)) != 0) {
         *pointer++ = src[i];
@@ -81,6 +73,31 @@ int convertInput(const char *src, Stack *input) {
   return flag;
 }
 
+int parseNumber(const char *src, char **pointer, int *i, Stack *input) {
+  int res = 1;
+  int dot_flag = 0;
+  int num_flag = 0;
+  int x_flag = 0;
+  while (strchr(DIGITS, src[*i]) != NULL) {
+    if (src[*i] != 'x') {
+      num_flag += 1;
+    } else {
+      input->x_status = 1;
+      x_flag += 1;
+    }
+    if (src[*i] == '.') {
+      dot_flag += 1;
+    }
+    *(*pointer)++ = src[*i];
+    *i += 1;
+  }
+  *i -= 1;
+  if (dot_flag > 1 || (x_flag == 1 && num_flag > 0) || (x_flag > 1)) {
+    res = 0;
+  }
+  return res;
+}
+
 int expressionValidation(Stack *input) {
   InputNode *temp = input->top;
   int res = 1;
@@ -104,6 +121,10 @@ int expressionValidation(Stack *input) {
     } else if (previous[0] == ')' && current[0] == '(') {
       res = 0;
     } else if (previous[0] == '(' && current[0] == ')') {
+      res = 0;
+    } else if (strchr(DIGITS, previous[0]) != NULL && current[0] == '(') {
+      res = 0;
+    } else if (strchr(DIGITS, current[0]) != NULL && previous[0] == ')') {
       res = 0;
     }
   }

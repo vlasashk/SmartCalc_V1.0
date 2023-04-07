@@ -3,6 +3,8 @@
 Stack *rpnConverter(Stack *input) {
   Stack *rpn_stack = initStack();
   Stack *temp_stack = initStack();
+  rpn_stack->x_status = input->x_status;
+  rpn_stack->x_value = input->x_value;
   while (!isEmpty(input)) {
     char *pop_value = pop(input);
     int priority = checkPriority(pop_value[0]);
@@ -18,7 +20,6 @@ Stack *rpnConverter(Stack *input) {
     push(rpn_stack, pop_value);
     free(pop_value);
   }
-  printf("\n");
   freeStack(temp_stack);
   return rpn_stack;
 }
@@ -76,9 +77,9 @@ int checkPriority(char oper) {
   int out;
   if (strchr("^", oper) != NULL) {
     out = 5;
-  } else if (strchr("~", oper) != NULL) {
-    out = 4;
   } else if (strchr(OPERATIONS, oper) != NULL) {
+    out = 4;
+  } else if (strchr("~", oper) != NULL) {
     out = 3;
   } else if (strchr("*/%", oper) != NULL) {
     out = 2;

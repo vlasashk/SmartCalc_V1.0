@@ -1,101 +1,10 @@
 #include "stack.h"
 
-// double algorithm(char *str, double x) {
-//   char *p;
-//   char temp[100] = " ";
-//   strcpy(temp, str);
-//   p = strtok(temp, " ");
-
-//   while (p != NULL) {
-//     int flag = 1;
-//     int length = strlen(p);
-//     for (int i = 0; i < length; i++) {
-//       if ((p[i] < '0' || p[i] > '9') && p[i] != '.') {
-//         flag = 0;
-//         if (p[i] == '+' || p[i] == '-' || p[i] == '*' || p[i] == '/') {
-//           double var2 = pop_d();
-//           double var1 = pop_d();
-//           push_d(calc_duo(var1, var2, p[i]));
-//         } else if (p[i] == '~' || p[i] == 's' || p[i] == 'c' || p[i] == 't'
-//         ||
-//                    p[i] == 'C' || p[i] == 'R' || p[i] == 'L') {
-//           double var = pop_d();
-//           push_d(calc_uno(var, p[i]));
-//         } else if (p[i] == 'x' || p[i] == 'X') {
-//           printf("gblh %lf\n", x);
-//           push_d(x);
-//         }
-//       }
-//     }
-//     char *temp_pointer = p;
-//     if (flag != 0) {
-//       push_d(atof(temp_pointer));
-//     }
-//     p = strtok(NULL, " ");
-//   }
-//   // display_d();
-//   destroy_d();
-//   return pop_d();
-// }
-
-// double calc_uno(double a, char oper) {
-//   double res = 0.0;
-//   switch (oper) {
-//   case '~':
-//     res = -a;
-//     break;
-//   case 's':
-//     res = sin(a);
-//     break;
-//   case 'c':
-//     res = cos(a);
-//     break;
-//   case 't':
-//     res = tan(a);
-//     break;
-//   case 'C':
-//     res = 1 / tan(a);
-//     break;
-//   case 'R':
-//     res = sqrt(a);
-//     break;
-//   case 'L':
-//     res = log(a);
-//     break;
-//   default:
-//     break;
-//   }
-//   return res;
-// }
-
-// double calc_duo(double a, double b, char oper) {
-//   double res = 0.0;
-//   switch (oper) {
-//   case '+':
-//     res = (double)a + b;
-//     break;
-//   case '-':
-//     res = (double)a - b;
-//     break;
-//   case '*':
-//     res = (double)a * b;
-//     break;
-//   case '/':
-//     if (b == 0) {
-//       printf("Division by zero\n");
-//       break;
-//     }
-//     res = (double)a / b;
-//     break;
-//   default:
-//     break;
-//   }
-//   return res;
-// }
-
 Stack *initStack() {
   Stack *temp = (Stack *)malloc(sizeof(Stack));
   temp->top = NULL;
+  temp->x_status = 0;
+  temp->x_value = NULL;
   return temp;
 }
 
@@ -147,6 +56,9 @@ void freeStack(Stack *input) {
     input->top = input->top->next;
     free(temp->lexema);
     free(temp);
+  }
+  if (input->x_value != NULL) {
+    free(input->x_value);
   }
   free(input);
 }
