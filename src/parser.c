@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "Headers/parser.h"
 
 int inputFromUser(char *src) {
   int res = 1;
@@ -14,16 +14,18 @@ int inputFromUser(char *src) {
 
 int inputX(Stack *input) {
   int res = 1;
-  char x_input[MAX_LIMIT];
-  if (fgets(x_input, MAX_LIMIT, stdin) == NULL) {
-    res = 0;
-  } else {
-    if ((strlen(x_input) - 1) == 0) {
+  if (input->x_status == 1) {
+    char x_input[MAX_LIMIT];
+    if (fgets(x_input, MAX_LIMIT, stdin) == NULL) {
       res = 0;
+    } else {
+      if ((strlen(x_input) - 1) == 0) {
+        res = 0;
+      }
+      x_input[strlen(x_input) - 1] = '\0';
+      input->x_value = (char *)calloc(strlen(x_input) + 1, sizeof(char));
+      strcpy(input->x_value, x_input);
     }
-    x_input[strlen(x_input) - 1] = '\0';
-    input->x_value = (char *)calloc(strlen(x_input) + 1, sizeof(char));
-    strcpy(input->x_value, x_input);
   }
   return res;
 }

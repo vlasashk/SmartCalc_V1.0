@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "Headers/stack.h"
 
 Stack *initStack() {
   Stack *temp = (Stack *)malloc(sizeof(Stack));

@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "Headers/stack.h"
 
 Stack *rpnConverter(Stack *input) {
   Stack *rpn_stack = initStack();
