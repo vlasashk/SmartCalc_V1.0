@@ -1,5 +1,6 @@
 #include "headers/calculator.h"
 
+
 void calculator(char *user_input, char *x_input, char *calc_out) {
   double result = 0.0f;
   Stack *input = initStack();

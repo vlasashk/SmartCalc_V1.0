@@ -222,7 +222,6 @@ int bracketsParsing(char bracket, int *left_br, int *right_br) {
     if (*right_br < *left_br) {
       *right_br += 1;
     } else {
-      printf("Wrong input\nYou have too few opening brackets\n");
       res = 0;
     }
   } else if (bracket == '(') {
