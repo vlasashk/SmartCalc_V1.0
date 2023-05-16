@@ -13,7 +13,7 @@ qcp:
 	git submodule init
 	git submodule update
 
-install: build
+install: qcp build
 	cd CalcApp; make
 
 build: s21_smart_calc.a
