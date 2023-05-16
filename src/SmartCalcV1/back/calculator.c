@@ -16,9 +16,6 @@ void calculator(char *user_input, char *x_input, char *calc_out) {
       sprintf(calc_out, "Error");
     }
     freeStack(rpn);
-    // if (input->x_status == 1 && input->x_value != NULL) {
-    //   free(input->x_value);
-    // }
   } else {
     sprintf(calc_out, "Invalid input");
   }

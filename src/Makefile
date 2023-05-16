@@ -36,6 +36,14 @@ gcov_flag:
 debug_flag:
 	$(eval CFLAGS += -g)
 
+dist:
+	tar --totals -cvf CalcApp.tar CalcApp
+
+dvi:
+	rm -rf Documentation
+	doxygen
+	open Documentation/html/index.html
+
 
 gcov_report: clean gcov_flag test
 	mkdir -p gcov
@@ -60,4 +68,4 @@ valgrind:
 	CK_FORK=no valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all ./test
 
 clean:
-	rm -rf test gcov $(BACK_P)*.o *.a *.gcda *.gcno *.gch *.pdf *.tar rep.info test.info test.dSYM coverage.info
+	rm -rf Documentation test gcov $(BACK_P)*.o *.a *.gcda *.gcno *.gch *.pdf *.tar rep.info test.info test.dSYM coverage.info

@@ -11,7 +11,8 @@
 #include "../SmartCalcV1/back/headers/credit.h"
 
 #define EPS_FOR_TEST 1e-7
-#define _USE_MATH_DEFINES
+#define M_PI 3.14159265358979323846
+#define M_E 2.71828182845904523536
 
 Suite *test_simple_operations_suite(void);
 Suite *test_trigonometry_suite(void);
