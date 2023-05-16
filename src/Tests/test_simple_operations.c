@@ -180,6 +180,46 @@ START_TEST(wrong_input_test_3) {
 }
 END_TEST
 
+START_TEST(wrong_input_test_4) {
+  char input[128] = "(3)+(Pl+2)";
+  char x[128] = "";
+  char output[128] = {0};
+  char expect[] = "Invalid input";
+  calculator(input, x, output);
+  ck_assert_str_eq(output, expect);
+}
+END_TEST
+
+START_TEST(wrong_input_test_5) {
+  char input[128] = "(3)+6(5+2)";
+  char x[128] = "";
+  char output[128] = {0};
+  char expect[] = "Invalid input";
+  calculator(input, x, output);
+  ck_assert_str_eq(output, expect);
+}
+END_TEST
+
+START_TEST(wrong_input_test_6) {
+  char input[128] = "(3)6+(5+2)";
+  char x[128] = "";
+  char output[128] = {0};
+  char expect[] = "Invalid input";
+  calculator(input, x, output);
+  ck_assert_str_eq(output, expect);
+}
+END_TEST
+
+START_TEST(wrong_input_test_7) {
+  char input[128] = "(3.5.6)+(5+2)";
+  char x[128] = "";
+  char output[128] = {0};
+  char expect[] = "Invalid input";
+  calculator(input, x, output);
+  ck_assert_str_eq(output, expect);
+}
+END_TEST
+
 Suite *test_simple_operations_suite(void) {
   Suite *s;
   TCase *tc;
@@ -206,6 +246,10 @@ Suite *test_simple_operations_suite(void) {
   tcase_add_test(tc, wrong_input_test_1);
   tcase_add_test(tc, wrong_input_test_2);
   tcase_add_test(tc, wrong_input_test_3);
+  tcase_add_test(tc, wrong_input_test_4);
+  tcase_add_test(tc, wrong_input_test_5);
+  tcase_add_test(tc, wrong_input_test_6);
+  tcase_add_test(tc, wrong_input_test_7);
 
   suite_add_tcase(s, tc);
 

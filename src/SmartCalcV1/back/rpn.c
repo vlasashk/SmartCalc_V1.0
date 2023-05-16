@@ -4,7 +4,11 @@ Stack *rpnConverter(Stack *input) {
   Stack *rpn_stack = initStack();
   Stack *temp_stack = initStack();
   rpn_stack->x_status = input->x_status;
-  rpn_stack->x_value = input->x_value;
+  if (rpn_stack->x_status == 1 && input->x_value != NULL) {
+    rpn_stack->x_value =
+        (char *)calloc(strlen(input->x_value) + 1, sizeof(char));
+    strcpy(rpn_stack->x_value, input->x_value);
+  }
   while (!isEmpty(input)) {
     char *pop_value = pop(input);
     int priority = checkPriority(pop_value[0]);

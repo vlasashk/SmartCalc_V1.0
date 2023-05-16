@@ -68,6 +68,7 @@ double MainWindow::calcForGraph(double x, Stack *input) {
   } else {
     result = NAN;
   }
+  free(rpn);
   return result;
 }
 

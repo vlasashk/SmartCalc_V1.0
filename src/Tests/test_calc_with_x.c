@@ -182,7 +182,7 @@ END_TEST
 
 START_TEST(x_cos_pi_test) {
   char input[128] = "3.5-cos(x+Pi/e)";
-  char x[128] = "3";
+  char x[128] = "-3";
   double x_test = atof(x);
 
   char output[128] = {0};
@@ -194,24 +194,51 @@ START_TEST(x_cos_pi_test) {
 }
 END_TEST
 
-// START_TEST(copy_test) {
-//   char user_input[128] = "ln(x)+6+x+76/34*sqrt(ln(5))";
-//   Stack *input = initStack();
-//   convertInput(user_input, input);
-//   Stack *rpn = rpnConverter(input);
-//   reverseStack(rpn);
-//   Stack *copiedStack = copyStack(rpn);
-//   while (!isEmpty(rpn)) {
-//     char *peeks_got = pop(copiedStack);
-//     char *peeks_must = pop(rpn);
-//     ck_assert_str_eq(peeks_got, peeks_must);
-//     free(peeks_got);
-//     free(peeks_must);
-//   }
-//   freeStack(rpn);
-//   freeStack(input);
-// }
-// END_TEST
+START_TEST(x_cos_pi_test_2) {
+  char input[128] = "3.5-cos(x+e)";
+  char x[128] = "Pi";
+  double x_test = M_PI;
+
+  char output[128] = {0};
+  double expect = 3.5 - cos(x_test + M_E);
+
+  calculator(input, x, output);
+  double got = atof(output);
+  ck_assert_double_eq_tol(got, expect, EPS_FOR_TEST);
+}
+END_TEST
+
+START_TEST(x_wrong_cos_pi_test) {
+  char input[128] = "3.5-cos(x+Pi/e)";
+  char x[128] = "Pl";
+
+  char output[128] = {0};
+  char expect[128] = "Error";
+
+  calculator(input, x, output);
+  ck_assert_str_eq(output, expect);
+}
+END_TEST
+
+START_TEST(copy_test) {
+  char user_input[128] = "ln(x)+6+x+76/34*sqrt(ln(5))";
+  Stack *input = initStack();
+  convertInput(user_input, input);
+  Stack *rpn = rpnConverter(input);
+  reverseStack(rpn);
+  Stack *copiedStack = copyStack(rpn);
+  while (!isEmpty(rpn)) {
+    char *peeks_got = pop(copiedStack);
+    char *peeks_must = pop(rpn);
+    ck_assert_str_eq(peeks_got, peeks_must);
+    free(peeks_got);
+    free(peeks_must);
+  }
+  freeStack(rpn);
+  freeStack(input);
+  freeStack(copiedStack);
+}
+END_TEST
 
 Suite *test_calc_with_x_suite(void) {
   Suite *s;
@@ -235,7 +262,9 @@ Suite *test_calc_with_x_suite(void) {
   tcase_add_test(tc, x_ln_test);
   tcase_add_test(tc, x_wrong_test);
   tcase_add_test(tc, x_cos_pi_test);
-  //tcase_add_test(tc, copy_test);
+  tcase_add_test(tc, x_cos_pi_test_2);
+  tcase_add_test(tc, x_wrong_cos_pi_test);
+  tcase_add_test(tc, copy_test);
 
   suite_add_tcase(s, tc);
 

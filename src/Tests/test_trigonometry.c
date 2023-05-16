@@ -131,6 +131,42 @@ START_TEST(acos_bound_test) {
 }
 END_TEST
 
+START_TEST(sqrt_wrong_test) {
+  char input[128] = "sqrt(-9)";
+  char x[128] = "";
+
+  char output[128] = {0};
+  char expect[128] = "Error";
+
+  calculator(input, x, output);
+  ck_assert_str_eq(output, expect);
+}
+END_TEST
+
+START_TEST(ln_wrong_test) {
+  char input[128] = "ln(-9)";
+  char x[128] = "";
+
+  char output[128] = {0};
+  char expect[128] = "Error";
+
+  calculator(input, x, output);
+  ck_assert_str_eq(output, expect);
+}
+END_TEST
+
+START_TEST(mod_wrong_test) {
+  char input[128] = "9mod0";
+  char x[128] = "";
+
+  char output[128] = {0};
+  char expect[128] = "Error";
+
+  calculator(input, x, output);
+  ck_assert_str_eq(output, expect);
+}
+END_TEST
+
 Suite *test_trigonometry_suite(void) {
   Suite *s;
   TCase *tc;
@@ -151,6 +187,9 @@ Suite *test_trigonometry_suite(void) {
   tcase_add_test(tc, atan_test);
   tcase_add_test(tc, asin_bound_test);
   tcase_add_test(tc, acos_bound_test);
+  tcase_add_test(tc, sqrt_wrong_test);
+  tcase_add_test(tc, ln_wrong_test);
+  tcase_add_test(tc, mod_wrong_test);
 
   suite_add_tcase(s, tc);
 
