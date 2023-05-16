@@ -10,7 +10,4 @@
 #include <stdlib.h> /**< The standard library header file. */
 #include <string.h> /**< The string manipulation header file. */
 
-#define M_PI 3.14159265358979323846
-#define M_E 2.71828182845904523536
-
 #endif  // SRC_SMARTCALCV1_BACK_HEADERS_INCLUDES_H_
