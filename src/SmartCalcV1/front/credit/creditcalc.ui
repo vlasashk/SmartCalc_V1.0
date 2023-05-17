@@ -44,6 +44,7 @@
 	border-radius: 55px;
     background-color: rgb(241, 164, 60);
     min-width: 70px;
+	color: white;
 }
 
 QPushButton:pressed {
@@ -81,6 +82,7 @@ QPushButton:default {
 	border: 1px solid rgb(242, 165, 60);
 	background: rgb(58, 57, 57);
 	border-radius: 8px;
+	color: white;
 }</string>
     </property>
     <property name="text">
@@ -118,6 +120,7 @@ QPushButton:default {
 	background-color: rgb(42, 43, 44);
 	border: 1px solid #ccc; /* Set border for QSpinBox */
    	border-radius: 8px;
+	color: white;
 }
 
 QComboBox:editable {
@@ -185,6 +188,7 @@ QComboBox::item:selected {
 	background-color: rgb(42, 43, 44);
 	border: 1px solid #ccc; /* Set border for QSpinBox */
    	border-radius: 8px;
+	color: white;
 }
 
 QComboBox:editable {
@@ -252,6 +256,7 @@ QComboBox::item:selected {
 	border: 1px solid rgb(242, 165, 60);
 	background: rgb(58, 57, 57);
 	border-radius: 8px;
+	color: white;
 }</string>
     </property>
     <property name="text">
@@ -286,6 +291,7 @@ QComboBox::item:selected {
 	border: 1px solid rgb(242, 165, 60);
 	background: rgb(58, 57, 57);
 	border-radius: 8px;
+	color: white;
 }</string>
     </property>
     <property name="text">
@@ -320,6 +326,7 @@ QComboBox::item:selected {
 	border: 1px solid rgb(242, 165, 60);
 	background: rgb(58, 57, 57);
 	border-radius: 8px;
+	color: white;
 }</string>
     </property>
     <property name="text">
@@ -354,6 +361,7 @@ QComboBox::item:selected {
 	border: 1px solid rgb(242, 165, 60);
 	background: rgb(58, 57, 57);
 	border-radius: 8px;
+	color: white;
 }</string>
     </property>
     <property name="text">
@@ -388,6 +396,7 @@ QComboBox::item:selected {
 	background-color: rgb(42, 43, 44);
 	border: 1px solid #ccc; /* Set border for QSpinBox */
    	border-radius: 8px;
+	color: white;
 }
 
 QComboBox:editable {
@@ -426,7 +435,7 @@ QComboBox::item:selected {
 </string>
     </property>
     <property name="currentText">
-     <string>Май</string>
+     <string>Январь</string>
     </property>
     <item>
      <property name="text">
@@ -508,6 +517,7 @@ QComboBox::item:selected {
     	border: 1px solid #ccc; /* Set border for QSpinBox */
     	border-radius: 8px; /* Set border radius for QSpinBox */
     	padding-left: 10px; /* Add some padding to the QSpinBox */
+	color: white;
 }
 
 
@@ -578,6 +588,7 @@ QDoubleSpinBox::down-arrow {
     	border: 1px solid #ccc; /* Set border for QSpinBox */
     	border-radius: 8px; /* Set border radius for QSpinBox */
     	padding-left: 10px; /* Add some padding to the QSpinBox */
+	color: white;
 }
 
 
@@ -649,6 +660,7 @@ QSpinBox::down-arrow {
     	border: 1px solid #ccc; /* Set border for QSpinBox */
     	border-radius: 8px; /* Set border radius for QSpinBox */
     	padding-left: 7px; /* Add some padding to the QSpinBox */
+	color: white;
 }
 
 
@@ -722,6 +734,7 @@ QSpinBox::down-arrow {
     	border: 1px solid #ccc; /* Set border for QSpinBox */
     	border-radius: 8px; /* Set border radius for QSpinBox */
     	padding-left: 10px; /* Add some padding to the QSpinBox */
+	color: white;
 }
 
 
@@ -801,6 +814,7 @@ QSpinBox::down-arrow {
 	border: 1px solid rgb(242, 165, 60);
 	background: rgb(58, 57, 57);
 	border-radius: 8px;
+	color: white;
 }</string>
     </property>
     <property name="text">
@@ -835,6 +849,7 @@ QSpinBox::down-arrow {
 	border: 1px solid rgb(242, 165, 60);
 	background: rgb(58, 57, 57);
 	border-radius: 8px;
+	color: white;
 }</string>
     </property>
     <property name="text">
@@ -869,6 +884,7 @@ QSpinBox::down-arrow {
 	border: 1px solid rgb(242, 165, 60);
 	background: rgb(58, 57, 57);
 	border-radius: 8px;
+	color: white;
 }</string>
     </property>
     <property name="text">
@@ -898,6 +914,11 @@ QSpinBox::down-arrow {
       <pointsize>20</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: white;
+}</string>
+    </property>
     <property name="text">
      <string>0</string>
     </property>
@@ -922,6 +943,11 @@ QSpinBox::down-arrow {
       <pointsize>20</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: white;
+}</string>
+    </property>
     <property name="text">
      <string>0</string>
     </property>
@@ -945,6 +971,11 @@ QSpinBox::down-arrow {
      <font>
       <pointsize>20</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: white;
+}</string>
     </property>
     <property name="text">
      <string>0</string>
