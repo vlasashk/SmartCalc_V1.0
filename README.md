@@ -17,18 +17,21 @@ In addition, implemented separate credit module to calculate Annuity/Differentia
 - qt 6.5.0 (and higher)
 - doxygen
 
+#### Building
 ```
 git clone https://github.com/vlasashk/SmartCalc_V1.0.git
 cd SmartCalc_V1.0/src/
 make
 ```
-
-To generate HTML report about code test coverage (lcov)
+#### Running
+```
+make execute
+```
+#### Tests coverage report (lcov)
 ```
 make gcov_report
 ```
-
-To generate Documentation (doxygen)
+#### Generate documentation (doxygen)
 ```
 make dvi
 ```

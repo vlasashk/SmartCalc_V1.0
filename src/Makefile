@@ -27,7 +27,7 @@ uninstall: clean
 	rm -rf CalcApp
 
 execute:
-	cd CalcApp/SmartCalcV1.app/Contents/MacOS; ./SmartCalcV1
+	cd CalcApp; open ./SmartCalcV1.app
 
 gcov_flag:
 	$(eval CFLAGS += --coverage)
